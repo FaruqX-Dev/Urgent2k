@@ -1,63 +1,67 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 enum TransactionType { income, expense }
+
 class TransactionModel {
   final String id;
+  final String userId;
   final double amount;
-  final String category;
-  final DateTime timeStamp;
+  final String category; // e.g., 'Food', 'Transport'
   final String note;
- final String type;
+  final DateTime timestamp;
+  final TransactionType type;
+
   TransactionModel({
     required this.id,
+    required this.userId,
     required this.amount,
     required this.category,
-    required this.timeStamp,
     required this.note,
+    required this.timestamp,
     required this.type,
   });
- 
-  
 
-  TransactionModel copyWith({
-    String? id,
-    double? amount,
-    String? category,
-    DateTime? timeStamp,
-    String? note,
-    String? type,
-  }) {
+  // Convert a Firestore Document to a TransactionModel
+  factory TransactionModel.fromMap(Map<String, dynamic> map, String documentId) {
     return TransactionModel(
-      id: id ?? this.id,
-      amount: amount ?? this.amount,
-      category: category ?? this.category,
-      timeStamp: timeStamp ?? this.timeStamp,
-      note: note ?? this.note,
-      type: type ?? this.type,
+      id: documentId,
+      userId: map['userId'] ?? '',
+      amount: (map['amount'] ?? 0.0).toDouble(),
+      category: map['category'] ?? 'General',
+      note: map['note'] ?? '',
+      timestamp: (map['timestamp'] as Timestamp).toDate(),
+      type: map['type'] == 'income' ? TransactionType.income : TransactionType.expense,
     );
   }
 
+  // Convert a TransactionModel to a Map for Firestore
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
+    return {
+      'userId': userId,
       'amount': amount,
       'category': category,
-      'timeStamp': timeStamp.millisecondsSinceEpoch,
       'note': note,
-      'type': type,
+      'timestamp': Timestamp.fromDate(timestamp),
+      'type': type == TransactionType.income ? 'income' : 'expense',
     };
   }
 
-  factory TransactionModel.fromMap(Map<String, dynamic> map) {
+
+  TransactionModel copyWith({
+    double? amount,
+    String? category,
+    String? note,
+    DateTime? timestamp,
+    TransactionType? type,
+  }) {
     return TransactionModel(
-      id: map['id'] as String,
-      amount: map['amount'] as double,
-      category: map['category'] as String,
-      timeStamp: DateTime.fromMillisecondsSinceEpoch(map['timeStamp'] as int),
-      note: map['note'] as String,
-      type: map['type'] as String,
+      id: id,
+      userId: userId,
+      amount: amount ?? this.amount,
+      category: category ?? this.category,
+      note: note ?? this.note,
+      timestamp: timestamp ?? this.timestamp,
+      type: type ?? this.type,
     );
   }
-
 }

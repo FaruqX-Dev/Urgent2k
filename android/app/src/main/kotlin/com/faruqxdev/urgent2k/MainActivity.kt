@@ -1,4 +1,4 @@
-package com.example.urgent2k
+package com.faruqxdev.urgent2k
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "583016469748",
+    "project_id": "urgent2k-7506d",
+    "storage_bucket": "urgent2k-7506d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583016469748:android:ab165267420befd8f67aa1",
+        "android_client_info": {
+          "package_name": "com.faruqxdev.urgent2k"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_0OUIhFBRdiKWhl19lfp5sH6cLNlf6Mo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
