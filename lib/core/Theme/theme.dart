@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:urgent2k/core/Theme/text_theme.dart';
 
 class AppTheme {
   static const appBackgroundColor = Color.fromARGB(255, 5, 38, 8);
@@ -18,21 +19,7 @@ ThemeData darkMode = ThemeData(
     onPrimary: Colors.white, // readable text
   ),
 
-  textTheme: const TextTheme(
-    titleLarge: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-    bodyMedium: TextStyle(
-      fontSize: 18,
-      color: Colors.white70,
-    ),
-    labelLarge: TextStyle(
-      fontWeight: FontWeight.w600,
-      color: Colors.white,
-    ),
-  ),
+  textTheme: AppTextTheme.darkTextTheme,
 );
 
 
@@ -49,21 +36,7 @@ ThemeData lightMode = ThemeData(
 
     // matching neon blue accent
   ),
-  textTheme: const TextTheme(
-    titleLarge: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
-      color: Colors.black,
-    ),
-    bodyMedium: TextStyle(
-      fontSize: 18,
-      color: Colors.black87,
-    ),
-    labelLarge: TextStyle(
-      fontWeight: FontWeight.w600,
-      color: Colors.black,
-    ),
-  ),
+  textTheme: AppTextTheme.lightTextTheme,
 );
 
 
