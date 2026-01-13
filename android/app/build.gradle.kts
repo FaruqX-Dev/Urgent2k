@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.faruqxdev.urgent2k"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
