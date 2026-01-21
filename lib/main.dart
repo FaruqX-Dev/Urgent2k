@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:urgent2k/features/tracker/presentation/dashboard_screen.dart';
+import 'package:urgent2k/features/tracker/widget/bottom_navbar.dart';
 import 'package:urgent2k/firebase_options.dart';
 
 import 'core/Theme/theme.dart';
@@ -25,7 +26,7 @@ class MyApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ref.read(themeNotifierProvider),
-      home:DashboardScreen()
+      home:MainNavigation()
     );
   }
 }

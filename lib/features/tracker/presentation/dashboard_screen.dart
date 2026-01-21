@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:urgent2k/core/Theme/text_theme.dart';
+import 'package:urgent2k/features/tracker/widget/bottom_navbar.dart';
 import 'package:urgent2k/features/tracker/widget/mini_tab_bar.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
@@ -18,11 +19,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
     final textTheme = AppTextTheme.darkTextTheme;
     String currencyFormat = '#';
     var initialamount = 0;
-    final formatter = NumberFormat.currency(
-      symbol: currencyFormat,
-      decimalDigits: 2,
-    );
     return SafeArea(
+      bottom: true,
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -83,7 +81,21 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 ],
               ),
               SizedBox(height: 20,),
-              MiniTabCard()
+              MiniTabCard(),
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text(
+                      'latest Transactions', style: textTheme.titleMedium,
+                    ),
+                  ],
+                ),
+              )
+
             ],
           ),
         ),

@@ -60,7 +60,7 @@ class _MiniTabCardState extends State<MiniTabCard> {
   Widget _buildTabContent(int index) {
     switch (index) {
       case 0:
-        return EditableWeeklyChart();
+        return WeeklyExpenseChart(transactions: [],);
       case 1:
         return Text("Technical Details: Specs and documentation.");
       case 2:
